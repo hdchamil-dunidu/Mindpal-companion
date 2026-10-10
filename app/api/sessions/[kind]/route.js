@@ -1,0 +1,11 @@
+import {z} from 'zod';import {db} from '@/lib/db';import {sessionElapsed} from '@/lib/domain';import {identity,origin,body,handle,json,objectId,HttpError} from '@/lib/http';
+export const POST=handle(async(req,ctx)=>{origin(req);const userId=await identity(),{kind}=await ctx.params;if(!['focus','breathing'].includes(kind))throw new HttpError('Unknown session.',404);const input=await body(req),col=(await db()).collection(kind),now=new Date();
+ if(input.action==='start'){const {duration,mode}=z.object({duration:z.number().int().min(60).max(7200),mode:z.enum(['focus','short','long','breathing'])}).parse(input);if(kind==='breathing'&&mode!=='breathing'||kind==='focus'&&mode==='breathing')throw new HttpError('Invalid mode.');await col.updateMany({userId,status:{$in:['running','paused']}},{$set:{status:'cancelled',completed:false,endedAt:now}});const doc={userId,mode,plannedDuration:duration,elapsedMs:0,resumedAt:now,status:'running',completed:false,createdAt:now};const r=await col.insertOne(doc);return json({...doc,_id:r.insertedId});}
+ const filter={_id:objectId(input.id),userId};const s=await col.findOne(filter);if(!s)throw new HttpError('Session not found.',404);if(s.completed&&input.action==='finish')return json(s);if(!['running','paused'].includes(s.status))throw new HttpError('This session has already ended.');const elapsedMs=sessionElapsed(s);let changes={};
+ if(input.action==='pause'&&s.status==='running')changes={elapsedMs,status:'paused'};
+ else if(input.action==='resume'&&s.status==='paused')changes={resumedAt:now,status:'running'};
+ else if(input.action==='cancel')changes={elapsedMs,status:'cancelled',endedAt:now};
+ else if(input.action==='finish'){if(elapsedMs<s.plannedDuration*1000)throw new HttpError('The session is not finished yet.');changes={elapsedMs:s.plannedDuration*1000,actualDuration:s.plannedDuration,status:'completed',completed:true,endedAt:now};}
+ else throw new HttpError('Invalid session action.');
+ const updated=await col.findOneAndUpdate({...filter,status:s.status,resumedAt:s.resumedAt},{$set:changes},{returnDocument:'after'});if(!updated)throw new HttpError('Session changed in another tab. Refresh and try again.',409);return json(updated);
+});

@@ -1,0 +1,23 @@
+plugins { id 'com.android.application' }
+// Set through: node scripts/configure-android.mjs https://YOUR-DOMAIN SHA256_FINGERPRINT
+// The setup script validates and replaces this reserved example URL.
+def mindpalUrl = 'https://mindpal.example.invalid'
+def mindpalHost = 'mindpal.example.invalid'
+android {
+    namespace 'com.mindpal.companion'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'com.mindpal.companion'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+        manifestPlaceholders = [mindpalUrl: mindpalUrl, mindpalHost: mindpalHost]
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+}
+dependencies { implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.6.2' }
+tasks.register('verifyMindPalDomain') {
+    doLast { if (mindpalHost.endsWith('.invalid')) throw new GradleException('Configure your hosted HTTPS domain first. Read docs/ANDROID.md.') }
+}
+tasks.named('preBuild').configure { dependsOn 'verifyMindPalDomain' }

@@ -1,0 +1,3 @@
+'use client';
+import {useState} from 'react';import {ChevronDown,Sparkles} from 'lucide-react';import Luma from './Luma';
+export default function LumaDock({reaction,equipped,preferences,onGreet}){const [open,setOpen]=useState(true);return <aside className={'companion-dock '+(open?'expanded':'')} aria-label="Luma companion"><button className="dock-toggle" onClick={()=>setOpen(!open)} aria-expanded={open}><span><Sparkles size={13}/>Luma is here</span><ChevronDown size={15} style={{transform:open?'none':'rotate(180deg)'}}/></button>{open&&<><Luma reaction={reaction} equipped={equipped} preferences={preferences}/><button className="text-link" onClick={onGreet}>Say hello</button></>}</aside>}
