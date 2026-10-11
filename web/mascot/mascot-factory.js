@@ -1,0 +1,15 @@
+export const REACTIONS = {
+  idle: {label:'Idle', duration:4, loop:true, description:'A gentle breath. Ready when you are.'},
+  greeting: {label:'Greeting', duration:3, loop:false, description:'A little wave to say hello.'},
+  working: {label:'Working', duration:4, loop:true, description:'Focused eyes and a small pulsing blue activity badge.'},
+  slap: {label:'Slap', duration:1.7, loop:false, description:'A soft squash, a startled wobble, then recovery.'},
+  annoyed: {label:'Annoyed', duration:3, loop:true, description:'Narrow eyes and a tiny, unimpressed head shake.'},
+  error: {label:'Angry / Error', duration:3, loop:true, description:'Angry brows and a coral warning pulse.'},
+  happy: {label:'Happy', duration:2.8, loop:false, description:'Bright crescent eyes and a joyful bounce.'},
+  love: {label:'Love', duration:3.2, loop:false, description:'Heart-shaped eyes and softly floating hearts.'},
+  wink: {label:'Wink', duration:2, loop:false, description:'One eye closes with a playful little tilt.'},
+  yawn: {label:'Yawn', duration:3.6, loop:false, description:'A slow stretch, sleepy eyes, and a wide yawn.'},
+  dance: {label:'Dance', duration:4, loop:true, description:'A bouncing two-step with swaying hands.'},
+  stressed: {label:'Stressed', duration:3, loop:true, description:'A nervous shiver and a little blue sweat drop.'},
+  tired: {label:'Tired', duration:4, loop:true, description:'Heavy eyelids, a slow nod, and softer breathing.'},
+};
