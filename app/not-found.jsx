@@ -1,1 +1,0 @@
-import Link from 'next/link';export default function NotFound(){return <main className="center-screen"><h1>A little off the path.</h1><p>This page doesn’t exist.</p><Link className="button" href="/dashboard">Back to MindPal</Link></main>}

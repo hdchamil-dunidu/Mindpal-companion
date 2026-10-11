@@ -1,2 +1,0 @@
-import {existsSync,readFileSync,writeFileSync} from 'node:fs';import {randomBytes} from 'node:crypto';
-if(existsSync('.env.local')){console.log('.env.local already exists. It was not overwritten.');}else{const text=readFileSync('.env.example','utf8').replace('NEXTAUTH_SECRET=','NEXTAUTH_SECRET='+randomBytes(32).toString('hex'));writeFileSync('.env.local',text,{mode:0o600});console.log('Created .env.local with a unique session secret. Set MONGODB_URI, then run npm run db:setup.');}
