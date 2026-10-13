@@ -2,7 +2,7 @@ plugins { id 'com.android.application' }
 android {
  namespace 'app.mindpal'
  compileSdk 35
- defaultConfig { applicationId 'app.mindpal'; minSdk 26; targetSdk 34; versionCode 1; versionName '1.0.0' }
+ defaultConfig { applicationId 'app.mindpal'; minSdk 26; targetSdk 34; versionCode 3; versionName '1.2.0' }
  sourceSets { main { assets.srcDirs = ['../../web'] } }
  compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
  buildTypes { release { minifyEnabled false } }
