@@ -49,14 +49,33 @@ npm ci
 ```
 
 ### Step 4: Configure the Project
+    ## 🔑 API Key & Database Configuration
+
+After running:
 
 ```bash
 npm run setup
 ```
 
-This creates a private `.env` configuration file.
+Open the `.env` file created in the main project folder.
 
-Add the required MongoDB connection details, Gemini API key, and authentication configuration.
+Add your own Google Gemini API key and MongoDB connection URI Or Use These keys:
+
+## Gemini API Key and The model :
+GEMINI_API_KEY=AQ.Ab8RN6Jr3LjG-9TnwZ9JLKwSZ2CXtm00f7NGFpLRBpjQq_cwOQ
+
+## MongoDB URI:
+MONGODB_URI=mongodb://dbuser2e3yad:MindPal2026@fc-e405ade918c2-000.global.mongocluster.cosmos.azure.com:10260/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000MONGODB_DB=mindpal
+
+
+**Where to get the credentials:**
+
+- **Gemini API Key:** [Google AI Studio](https://aistudio.google.com/apikey)
+- **MongoDB URI:** [MongoDB Atlas](https://cloud.mongodb.com/)
+
+Save the `.env` file after adding your credentials.
+
+**After entering your API key and MongoDB connection URI, verify that both are in the correct format. Once confirmed, save the `.env` file and proceed with the following commands.**
 
 ### Step 5: Check Services
 
