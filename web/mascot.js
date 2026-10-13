@@ -19,10 +19,10 @@ export class Luma {
   const cancel=()=>{clearTimeout(hold);gesture=null;v.look.set(0,0);};canvas.addEventListener('pointercancel',cancel);canvas.addEventListener('pointerleave',cancel);
   canvas.addEventListener('contextmenu',e=>e.preventDefault());canvas.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();this.sound.unlock();this.react('happy');this.sound.cue('success');}});
  }
- setMood(mood){if(MOODS[mood])this.mood=mood;if(!this.until&&!this.activity)this.restore();}
- setSettings(settings){this.v.setReducedMotion(settings.reducedMotion);this.restore();}
+ setMood(mood){if(!MOODS[mood])return;this.mood=mood;this.moodExperienced=true;this.react(MOODS[mood].reaction,15);}
+ setSettings(settings){this.v.setReducedMotion(settings.reducedMotion||matchMedia('(prefers-reduced-motion:reduce)').matches);}
  setLook(look){if(this.v.model)attachAccessories(this.v,look);}
- restore(){this.mode=MOODS[this.mood].reaction;this.until=0;const clip=['tired','stressed'].includes(this.mode)?this.mode:'idle';this.v.play(clip,{quiet:true});}
+ restore(){this.mode='idle';this.until=0;this.v.play('idle',{quiet:true});}
  react(mode,seconds=3){if(!this.v.model)return;this.mode=mode;this.until=performance.now()+seconds*1000;const clip=this.v.actions[mode]?mode:mode==='thinking'?'working':'idle';this.v.play(clip,{quiet:true});}
  frame(dt){
   const v=this.v;if(!this.eyes)return;const motion=!v.reducedMotion;this.clock+=dt;if(this.until&&performance.now()>this.until)this.restore();
