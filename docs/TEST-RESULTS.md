@@ -1,4 +1,4 @@
-# MindPal 1.2 verification — 12 October 2026
+# MindPal verification — 12 October 2026
 
 ## Completed
 

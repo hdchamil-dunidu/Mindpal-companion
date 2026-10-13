@@ -1,0 +1,25 @@
+{
+  "type": "DOM workflow simulation; WebGL and layout not tested",
+  "passed": 19,
+  "checks": [
+    "Welcome → login → register, Google button and password confirmation",
+    "Create local profile without backend",
+    "Calendar validation, real event save, occasion and reminder",
+    "Calendar task creation and completion remain separate from events",
+    "Task edits persist",
+    "Completed history retained",
+    "All six money sections render",
+    "Expense saves amount, time, payment method and description",
+    "Transaction search and editing update records",
+    "Budget progress reflects actual transactions",
+    "Savings goal create and progress",
+    "Recording a recurring payment adds exactly one expense and advances its date",
+    "Manual plan rejects excess allocations and supports accept",
+    "Numerical reports persist; AI explicitly requires a connection",
+    "Sad mood saves and presents working support activities",
+    "Chat retains original scene container and gives clear disconnected error",
+    "Companion visibility persists across tabs",
+    "Transaction deletion preserves unrelated records",
+    "Reloading local storage retains completed workflow data"
+  ]
+}

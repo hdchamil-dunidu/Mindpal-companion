@@ -1,29 +1,8 @@
 {
-  "browser": "138.0.7204.0",
-  "checks": [
-    "Original GLB and all 13 clips load",
-    "Local onboarding and home",
-    "All moods save; Sad restores after reopening",
-    "Task creation, completion, and editing",
-    "Calendar validation and event persistence",
-    "Money entry and exact minor-unit totals",
-    "Accessory persistence",
-    "Mute and reduced-motion persistence",
-    "Unconfigured chat shows real error and no fabricated response",
-    "Focus pause preserves elapsed time across navigation",
-    "Breathing pause/resume/stop does not record cancelled work",
-    "Task deletion confirmation",
-    "Calendar edit and deletion",
-    "Money edit and CSV export",
-    "Dance music, immediate mute/unmute and navigation cleanup",
-    "Focus completion saves exactly 60 seconds using a test-controlled clock",
-    "Backup export and confirmed restore",
-    "Android Back JavaScript bridge closes a panel",
-    "No horizontal overflow at 360px",
-    "No horizontal overflow at 768px",
-    "No horizontal overflow at 1366px",
-    "Mascot keyboard interaction",
-    "No browser JavaScript errors"
-  ],
-  "errors": []
+  "version": "1.2.0",
+  "visualStatus": "blocked",
+  "reason": "Chromium launch denied socket operation by environment",
+  "screenshotsProduced": false,
+  "domWorkflowChecks": 19,
+  "physicalPhoneTested": false
 }

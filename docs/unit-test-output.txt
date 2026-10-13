@@ -1,0 +1,53 @@
+
+> mindpal@1.2.0 test
+> node --test tests/*.test.js
+
+✔ passwords use salted hashes and reject wrong values (385.014614ms)
+✔ registration, login, duplicate account and session expiry (355.147087ms)
+✔ ownership isolates records even with the same client UUID (4.280345ms)
+✔ chat rejects missing provider configuration rather than inventing a reply (0.837399ms)
+✔ validated Gemini cue and explicit quota error with mocked transport (4.354912ms)
+✔ chat retry returns the already persisted answer without another provider call (1.901464ms)
+✔ HTTP health and missing-config errors are real and secrets are not sent (90.091237ms)
+✔ session-secret rotation preserves account identity and invalidates old sessions (185.080176ms)
+✔ missing session secret does not create an unusable account (1.130815ms)
+✔ all six mood identifiers include a distinct Sad mapping (3.372397ms)
+✔ calendar rejects bad times, invalid dates and reversed intervals (1.341838ms)
+✔ event overlap treats adjacent events as distinct (0.31357ms)
+✔ timer excludes paused time and caps completion after backgrounding (1.009213ms)
+✔ incomplete and cancelled sessions cannot be saved (1.08504ms)
+✔ money uses integer minor units and exact totals (3.656758ms)
+✔ weekly progress only uses completed focus records in the range (1.531043ms)
+✔ settings and accessories validate all user-controlled values (1.403925ms)
+✔ AI recommendations use owner-only data, calculate hypothetical savings and cache results (66.350959ms)
+✔ AI invented categories and unsupported numeric prose are rejected before saving (3.192175ms)
+✔ AI weekly plan balances confirmed funds with commitments and savings (5.529661ms)
+✔ financial chat calculates exact figures, excludes other owners and leaves ordinary chat alone (3.619702ms)
+✔ mood expression is temporary and restore returns to idle without changing mood selection (0.389492ms)
+✔ financial totals, category percentages and period boundaries use integer values (7.31112ms)
+✔ comparable monthly range caps shorter months and handles month-to-date (1.562919ms)
+✔ budget is category- and period-specific and may show negative remainder (0.774757ms)
+✔ plan rejects oversubscribed funds, keeps savings separate, and carries daily unused spending (1.204136ms)
+✔ CSV roundtrip handles commas, quotes, newlines, formulas, currency and duplicates (1.449735ms)
+✔ recurring commitments are scheduled without becoming transactions and clamp month ends (11.950246ms)
+✔ legacy local records migrate new empty collections without losing existing data (11.694508ms)
+✔ financial snapshot removes owner IDs and descriptions from AI context (1.903987ms)
+✔ alerts have stable deduplication keys and no false goal completion (1.234357ms)
+✔ invalid finance fields and excessive allocations are rejected (0.883228ms)
+✔ leap-year annual comparison does not construct an invalid prior leap date (0.50693ms)
+✔ Google login uses state, browser challenge, PKCE and a single-use session exchange (21.259181ms)
+✔ Google never silently links an existing password account by email (232.120706ms)
+✔ Google missing configuration and unverified emails fail clearly (28.478153ms)
+✔ financial progress excludes other months and compares disjoint seven-day ranges (6.969625ms)
+✔ financial progress handles empty records and zero income without NaN (31.87349ms)
+✔ budgets validate minor units and reject invalid keys and values (1.065709ms)
+✔ calendar legacy events remain regular; special days persist with validation (2.197318ms)
+✔ mood support uses saved mood and offers working existing activity routes (0.458948ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 41
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3051.890988

@@ -1,13 +1,10 @@
 {
-  "file": "MindPal-debug.apk",
-  "sizeBytes": 928093,
-  "sha256": "abf2251fb2f991b3ecf2ebdcefeacc30ebac141ff1d0b53cb2221c003d6183fc",
-  "webAssetsMatchSource": true,
-  "originalGlbPreserved": true,
+  "version": "1.2.0",
+  "versionCode": 3,
+  "applicationId": "app.mindpal",
+  "signatureV2": true,
+  "signatureV3": true,
   "minSdk": 26,
   "targetSdk": 34,
-  "compileSdk": 35,
-  "applicationId": "app.mindpal",
-  "signing": "debug certificate; verified v2 and v3",
-  "deviceInstalled": false
+  "physicalPhoneTested": false
 }

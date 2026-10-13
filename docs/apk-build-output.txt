@@ -1,0 +1,43 @@
+----------
+1. WARNING in /workspace/scratch/294da6ea5f28/project/MindPal/android/app/src/main/java/app/mindpal/MainActivity.java (at line 35)
+	settings.setAllowFileAccess(false);settings.setAllowContentAccess(true);settings.setAllowFileAccessFromFileURLs(false);settings.setAllowUniversalAccessFromFileURLs(false);
+	                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method setAllowFileAccessFromFileURLs(boolean) from the type WebSettings is deprecated
+----------
+2. WARNING in /workspace/scratch/294da6ea5f28/project/MindPal/android/app/src/main/java/app/mindpal/MainActivity.java (at line 35)
+	settings.setAllowFileAccess(false);settings.setAllowContentAccess(true);settings.setAllowFileAccessFromFileURLs(false);settings.setAllowUniversalAccessFromFileURLs(false);
+	                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method setAllowUniversalAccessFromFileURLs(boolean) from the type WebSettings is deprecated
+----------
+3. WARNING in /workspace/scratch/294da6ea5f28/project/MindPal/android/app/src/main/java/app/mindpal/MainActivity.java (at line 80)
+	@Override public void onBackPressed(){web.evaluateJavascript("window.mindpalBack ? window.mindpalBack() : false",new ValueCallback<String>(){@Override public void onReceiveValue(String result){if(!"true".equals(result))MainActivity.super.onBackPressed();}});}
+	                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^
+The method onBackPressed() from the type Activity is deprecated
+----------
+3 problems (3 warnings)
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+package: name='app.mindpal' versionCode='3' versionName='1.2.0' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'
+minSdkVersion:'26'
+targetSdkVersion:'34'
+uses-permission: name='android.permission.INTERNET'
+application-label:'MindPal'
+application-icon-160:'res/drawable/ic_launcher.xml'
+application: label='MindPal' icon='res/drawable/ic_launcher.xml'
+launchable-activity: name='app.mindpal.MainActivity'  label='' icon=''
+feature-group: label=''
+  uses-gl-es: '0x30000'
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--'
+densities: '160'
+Built /workspace/scratch/294da6ea5f28/project/MindPal/build/MindPal-debug.apk
