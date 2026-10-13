@@ -1,59 +1,118 @@
-# MindPal 1.0
+# MindPal-Companion  🌟
 
-An Android and laptop companion built from the supplied written design and the original Luma developer assets. The Android app bundles the same responsive application that runs in a laptop browser. The supplied pearl-white GLB is unchanged.
+**Your Personal AI-Powered 3D Companion**
 
-**Start now:** install `MindPal-debug.apk`, choose Continue, and enter your name. Planning, mood check-ins, focus, activities, customization, and money management save on your device without an account.
+MindPal is an interactive personal assistant application featuring **Luma**, a friendly 3D companion designed to help users stay organized, manage daily activities, track expenses, and improve productivity.
 
-**Connect later:** real Gemini chat and multi-device records require your own HTTPS backend, Gemini API key, and Azure MongoDB-compatible database. These were not configured during delivery. The app displays an explicit connection error until they are configured; it does not invent AI replies.
+The application supports both laptop browsers and Android devices.
 
-## Run on a laptop
+## ✨ Features
 
-Install Node.js 22.9 or newer (tested with 24.19). Extract this project. On Windows, double-click `START-MINDPAL.bat`, or run these commands in the project folder:
+- **3D Luma Companion** – Interactive mascot with animations, expressions, and reactions.
+- **AI Chat** – Have conversations with Luma using Google Gemini.
+- **Mood Tracker** – Record daily moods and enjoy mood-based activities.
+- **Task Management** – Create, edit, complete, and organize daily tasks.
+- **Calendar** – Plan and manage activities and schedules.
+- **Money Management** – Track income, expenses, budgets, and financial reports.
+- **AI Recommendations** – Receive helpful planning and financial suggestions.
+- **User Accounts** – Email/password authentication and Google sign-in.
 
-```sh
+## 🛠️ Technologies Used
+
+- HTML, CSS, JavaScript
+- Three.js (3D Mascot)
+- Node.js
+- MongoDB
+- Google Gemini API
+- Android Java WebView
+
+## 🚀 Installation & Setup
+
+### Step 1: Requirements
+
+Install the following:
+
+- Node.js and npm
+- MongoDB database (local or cloud)
+- Google Gemini API key for AI features
+
+### Step 2: Download the Project
+
+Clone the repository or download it as a ZIP file and extract it.
+
+Open a terminal inside the main project folder.
+
+### Step 3: Install Dependencies
+
+```bash
 npm ci
+```
+
+### Step 4: Configure the Project
+
+```bash
+npm run setup
+```
+
+This creates a private `.env` configuration file.
+
+Add the required MongoDB connection details, Gemini API key, and authentication configuration.
+
+### Step 5: Check Services
+
+```bash
+npm run check:services
+```
+
+### Step 6: Set Up Database
+
+```bash
+npm run db:setup
+```
+
+### Step 7: Start the Application
+
+```bash
 npm start
 ```
 
-Open <http://localhost:3000>. Keep the terminal open while using the app. Use the same browser and address to retain local records. `localhost` and `127.0.0.1` have separate browser storage. Internet access is needed for the first dependency installation; the included assets have no CDN dependency.
+Open your browser and visit:
 
-## Documentation
+**http://localhost:3000**
 
-- [Setup, hosting, installation, and troubleshooting](docs/SETUP.md)
-- [Architecture, behavior, and code guide](docs/ARCHITECTURE.md)
-- [Database schema, indexes, and migration](docs/DATABASE.md)
-- [Asset sources, licenses, and replacements](docs/ASSETS.md)
-- [Validation results and completion table](docs/TEST-RESULTS.md)
-- [Original written requirements](docs/REQUIREMENTS.md)
+## 📱 Android Application
 
-## Verify and build
+MindPal also supports Android through a WebView APK.
 
-```sh
+The Android version requires access to the running backend server. Follow the Android and HTTPS setup instructions in the documentation.
+
+## 🧪 Testing
+
+Run the available project tests:
+
+```bash
 npm test
 npm run check
 ```
 
-For browser tests, stop any existing server on port 3000, then install the test dependency and browser:
+## 📖 Documentation
 
-```sh
-npm install --no-save playwright@1.62.1
-npx playwright install chromium
-node scripts/ui-smoke.cjs
-```
+- [Complete Setup Guide](docs/UPDATE-.md)
+- [Testing Results](docs/TEST-RESULTS.md)
 
-Tests use an isolated browser profile and test data. Backend tests use explicit test doubles; they do not assert that Azure or Gemini is connected.
+## 🔒 Security
 
-With JDK 17 and Android SDK platform 35 installed:
+- Never upload `.env` files or API keys to GitHub.
+- Keep database credentials and signing keys private.
+- Use environment variables for sensitive configuration.
+- Export local data before uninstalling older APK versions.
 
-```sh
-cd android
-./gradlew assembleDebug
-```
+## 📌 Version
 
-On Windows use `gradlew.bat assembleDebug`. The APK is in `android/app/build/outputs/apk/debug/`. A direct SDK build is also supplied in `scripts/build-apk.py`; that is the route actually used to produce this delivery. See the setup guide for prerequisites, signing and the exact command.
+**MindPal - Companion**
 
-## Delivery limits
+An updated version of MindPal 1.1, preserving the original Luma companion and improving the application's features and integrations.
 
-The APK was built, aligned and signature-verified. Browser flows and isolated backend/domain tests ran successfully. No physical Honor X5 or Android emulator was available. Android installation, native document dialogs, battery behavior and device audio still need checking on your phone. Real cloud connectivity is configuration-dependent. This is a debug-signed sideload build, not a Play Store release.
+---
 
-The Figma file contains reusable foundations. Its full screen write was blocked by an automatic approval usage limit. The app itself implements the written design.
+**Made with ❤️ for smarter daily living.**
