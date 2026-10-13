@@ -1,76 +1,37 @@
-# Validation and completion report
+# MindPal 1.2 verification — 12 October 2026
 
-Date: 2026-10-11. Version: 1.0.0. This report describes actual checks, not a claim that every platform/service has been tested.
+## Completed
 
-## Executed checks
+- **41 Node automated tests passed**, zero failures. See `unit-test-output.txt`.
+- **19 DOM workflow checks passed** using jsdom, with actual UI handlers and local storage. See `dom-results.json` and `scripts/ui-smoke.mjs`.
+- **37 JavaScript/ES-module files passed syntax checks.**
+- Android APK compiled from this source with official Android SDK Build Tools 35.0.0, Android platform 35 and ECJ.
+- APK signature verification: v2 and v3 passed. Application ID `app.mindpal`, version name `1.2.0`, version code `3`, minimum Android API 26, target API 34.
+- Original `web/mascot/models/luma-pearl.glb` is byte-for-byte identical to the delivered 1.1 ZIP. SHA-256: `3e91cec286730a4589daddd93785c5a7a7d4bd4b7f7bf5d6164dff27f2eb88dc`.
 
-- `npm test`: **16 passed, 0 failed**. Domain rules, ownership, passwords, sessions, secret rotation, HTTP errors and chat retry/cue behavior. Database/Gemini behavior in these tests uses explicit isolated test doubles; no real provider success is implied.
-- `npm run check`: **18 JavaScript files passed syntax checks**. Native Java also compiled successfully. There is no TypeScript project or separate lint configuration.
-- Playwright + headless Chromium 138.0.7204.0: **23 named browser checks passed**, no collected JavaScript errors. WebGL used SwiftShader. See `browser-results.json` for the exact list/version. The test was run from an isolated fresh browser profile; its example activity is not shipped as app data.
-- Phone/tablet/laptop responsive checks at 360, 768 and 1366 CSS pixels: no horizontal overflow in Home, Worklist, Calendar, Money and Settings. Screens were visually inspected; narrow Money cards and a canvas-glow overflow were fixed.
-- Original GLB and all 13 animation clips loaded. The original GLB is byte-identical to the supplied model. Home mascot size, mood page, worklist, calendar, chat and finance screens were inspected in browser screenshots.
-- APK compiled with Java 17 runtime + ECJ 3.38.0 and official Android SDK 35 tools, converted with D8, aligned with zipalign, and signed with a generated debug key. `apksigner verify --verbose` passed v2/v3 verification. Package/manifest/assets were inspected. No Android install or startup was run.
+Automated tests cover password/session behavior, missing configuration, owner isolation, mocked Gemini replies/errors, cached chat retries, calendar validation and overlaps, timer completion, mood mapping and temporary expression reset, finance arithmetic and date boundaries, leap-year comparison, budgets, plan balance and savings separation, CSV escaping/validation/deduplication, recurring date boundaries, local data migration, alert keys, privacy of financial AI context, grounded recommendation savings, AI validation/cache, and Google state/PKCE/polling/explicit linking safeguards.
 
-## Feature completion table
+DOM workflows cover welcome/login/signup navigation and password confirmation, local onboarding, calendar CRUD/validation, task creation/completion/edit/history, separate event/task records, six money sections, transaction fields/search/edit/delete, budgets, goals, recurring payment recording, plan validation/acceptance, numerical reports, disconnected AI errors, saved Sad mood/support links, chat scene container, companion visibility, and persistence after loading a new store.
 
-| Requirement | Implementation and verification | Remaining limit |
-| --- | --- | --- |
-| Written dark design; focused Home; drawer and panels | Implemented and browser checked; original Luma shown with mood glow | No supplied screenshot dimensions to reproduce beyond the written design |
-| Original mascot + clips | GLB unchanged; 13 clips load; keyboard reaction checked | Physical touch, blink/gaze quality and all clip transitions need phone review |
-| Six moods including Sad | All six saved through UI; Sad restored after reload; canonical map tested | Live cloud write/rollback needs configured service |
-| Real Gemini conversation | Backend implementation, context, errors, cue validation and retry; missing-config UI tested | **Configuration-dependent:** no key/account generation test |
-| Secure cloud records | Owner-enforced CRUD, password/session tests, secret rotation tested | **Configuration-dependent:** exact Azure tier/URI and live two-account test |
-| Worklist | Create, complete, edit and confirmed delete browser checked; progress calculations tested | Recurrence and automatic calendar linking are not implemented |
-| Calendar | Validation, create, edit, delete and date-based rendering checked; overlap rule tested | Native date/time picker appearance not checked on Honor |
-| Focus and breaks | Pause across navigation and reset checked; completed 60-second session saved using a controlled test clock; elapsed arithmetic tested | Real Android sleep/background timing and clock-change behavior not device-tested |
-| Dance | Start, master mute/unmute and navigation audio cleanup tested | Audio state verified; physical playback quality untested |
-| Breathing | Start/pause/resume/stop and no cancelled record checked | Physical animation/audio synchronization untested |
-| Stretching | Implemented with shared activity timer/audio lifecycle and reviewed | Stretch-specific end-to-end flow not separately exercised |
-| Persistent settings | Master mute/reduced motion reload checked; validation tested; volume/music/voice controls implemented | System speech and physical audio device untested |
-| Customization | Cap save/reload checked; validated options; rig attachments reviewed | Every accessory combination not individually screenshot-tested |
-| Money | Create/edit, exact amounts, totals, category display and CSV export tested; delete uses shared confirmed CRUD handler | Finance-specific delete was code-reviewed, not separately executed |
-| JSON backup | Export, modify profile, confirm restore and restored records/name checked | Native Android document provider dialogs untested |
-| Android Back | JavaScript bridge closes drawer in browser; native hook compiled/reviewed | Actual OS Back/gesture and soft keyboard untested |
-| Android APK | Actual signed build produced and signature/alignment/contents verified | No emulator or physical phone install/startup available |
-| Laptop | Browser flows executed; bundled fonts/model load | Windows launcher and other browsers not executed |
-| HTTPS deployment | Real backend, Docker recipe and setup guide supplied | No hosting account/domain chosen; no deployment created |
-| Figma | File and reusable design foundations created | Full screen write blocked by automatic approval review usage limit |
-| Source archive / documentation | Frontend, backend, native shell, assets, build tools, environment example and guides included | Build dependencies downloaded on the user's machine |
+## Not verified in this environment
 
-## Browser checks performed
+- **Live MongoDB, Gemini, and Google OAuth:** no user credentials were supplied. Provider tests use explicit test doubles, not real accounts. Run `npm run check:services`, then sign in and send a real chat on laptop and phone.
+- **Visual browser layout and WebGL rendering:** Chromium could not start because the environment denied its required socket operation (`Operation not permitted`). DOM checks do not verify rendered appearance, animation fidelity or performance. No browser screenshots were produced.
+- **Physical Android device:** installation, external-browser return after Google login, document picker, audio volume, keyboard safe areas, touch behavior, and performance remain to be checked on the user's phone.
+- **Hosted service:** no permanent server or Google Cloud project was deployed. The guide explains laptop HTTPS tunnel testing and private configuration.
 
-1. Original GLB and all 13 clips load.
-2. Local onboarding and Home.
-3. All moods save; Sad restores after reopening.
-4. Task creation, completion and editing.
-5. Calendar validation and event persistence.
-6. Money entry and exact minor-unit totals.
-7. Accessory persistence.
-8. Mute and reduced-motion persistence.
-9. Unconfigured chat shows real error and no fabricated reply.
-10. Focus pause preserves elapsed time across navigation.
-11. Breathing pause/resume/stop does not record cancelled work.
-12. Task deletion confirmation.
-13. Calendar edit and deletion.
-14. Money edit and CSV export.
-15. Dance music, immediate mute/unmute and navigation cleanup.
-16. Focus completion saves exactly 60 seconds using a controlled clock.
-17. Backup export and confirmed restore.
-18. Android Back JavaScript bridge closes a panel.
-19–21. No horizontal overflow at 360, 768 and 1366 pixels.
-22. Mascot keyboard interaction.
-23. No browser JavaScript errors.
+## Functional boundaries
 
-Timing acceleration is test-only and is not present in the application. Backend fixtures use `.invalid` emails and are never inserted into a real database.
+Calendar reminders run while the app is open. Numerical completed-week/month reports are prepared on app open when enabled; there is no background scheduler or push notification service. Savings progress is user-entered and no bank is connected. AI plans are drafts requiring review/acceptance. Financial chat does not execute mutations. Password reset and email verification are not included.
 
-## Physical-device acceptance checklist (not executed here)
+## Device acceptance checklist
 
-- Install on Honor X5 / Android 14, launch twice and confirm saved name, mood, accessories and records.
-- Inspect all screens with the keyboard open; test portrait/landscape, Back, drawers and confirmation dialogs.
-- Try tap/double-tap/hold and normal page scrolling, each reaction and accessory; confirm Luma stays recognizable and performance is acceptable.
-- Start dance, change volume, mute/unmute, leave the screen, lock the phone and return; ensure no unintended sound. Check optional speech separately.
-- Start/pause focus, lock the phone, resume, finish and verify one exact-duration session; reset and verify no cancelled session is credited.
-- Use Android Files to export CSV/JSON and restore a backup; export before any uninstall.
-- Connect the actual HTTPS service, register two test accounts, verify cross-account isolation and persistent CRUD/history. Send real Gemini messages, exercise failure/retry, and confirm no duplicate completed replies.
-
-These are remaining acceptance checks, not hidden “passes.” No deployment credentials, APK signing credentials or fake personal records are included in the archive.
+1. Export old local records before any uninstall; install the new APK.
+2. Run setup/service checks on the laptop, create an email account, then log out and back in.
+3. Connect the phone to the laptop's HTTPS tunnel and sign in to the same account.
+4. Create/edit/complete/delete a task and create/edit/delete an event; reload and confirm persistence on each device.
+5. Test Google login and return from the external browser.
+6. Choose Sad, save, confirm colour stays, expression returns to idle, and the activity suggestion appears after about fifteen seconds.
+7. Visit all tabs, minimize/reopen Luma, open forms and the keyboard, and confirm controls remain reachable.
+8. Record a transaction, check chart/budget changes, test CSV export/import and recurring payment recording, generate a report and Gemini plan.
+9. Test a real chat, then stop the tunnel and confirm a clear connection error.
