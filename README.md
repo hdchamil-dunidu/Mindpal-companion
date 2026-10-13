@@ -61,8 +61,21 @@ Open the `.env` file created in the main project folder.
 
 Add your own Google Gemini API key and MongoDB connection URI Or Use These keys:
 
-## Gemini API Key and The model :
-GEMINI_API_KEY=AQ.Ab8RN6Jr3LjG-9TnwZ9JLKwSZ2CXtm00f7NGFpLRBpjQq_cwOQ
+## 🔑 Gemini API Key
+
+To enjoy the full MindPal experience, including AI-powered conversations with Luma, please create your own **free Gemini API key** using the link below:
+
+👉 **[Get Your Gemini API Key – Google AI Studio](https://aistudio.google.com/apikey)**
+
+After generating your API key, open the `.env` file in the project folder and paste it as follows:
+
+```env
+GEMINI_API_KEY=YOUR_API_KEY_HERE
+```
+
+Save the file and run `npm run check:services` to verify the connection.
+
+**Note:** Keep your API key private and never upload it to GitHub. Free-tier access is subject to Google's usage limits and availability.
 
 ## MongoDB URI:
 MONGODB_URI=mongodb://dbuser2e3yad:MindPal2026@fc-e405ade918c2-000.global.mongocluster.cosmos.azure.com:10260/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000MONGODB_DB=mindpal
