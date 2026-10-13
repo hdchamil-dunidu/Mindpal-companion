@@ -1,6 +1,6 @@
 {
   "name": "mindpal",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "description": "MindPal Android and browser companion with original Luma assets",
@@ -13,7 +13,10 @@
     "test": "node --test tests/*.test.js",
     "check": "node scripts/check.js",
     "check:services": "node --env-file-if-exists=.env scripts/check-services.js",
-    "db:setup": "node --env-file-if-exists=.env server/setup.js"
+    "db:setup": "node --env-file-if-exists=.env server/setup.js",
+    "configure:android": "node --env-file-if-exists=.env scripts/configure-android.js",
+    "setup": "node scripts/setup-env.js",
+    "models": "node --env-file-if-exists=.env scripts/list-models.js"
   },
   "dependencies": {
     "mongodb": "6.20.0"
